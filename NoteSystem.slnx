@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Launcher/Launcher.csproj" Id="0604416a-cab6-4a33-91a6-e616fc89fc74" />
+  <Project Path="StatsAgent/StatsAgent.csproj" Id="26f47615-f8f1-4d7f-8e72-9d848e23f007" />
 </Solution>
