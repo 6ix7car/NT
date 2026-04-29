@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F1A184D4-6553-4916-AB0A-2497D0C5FC39}|NoteSystem\\NoteSystem.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\notesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F1A184D4-6553-4916-AB0A-2497D0C5FC39}|NoteSystem\\NoteSystem.csproj|solutionrelative:notesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\launcher\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|solutionrelative:launcher\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\launcher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|solutionrelative:launcher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\launcher\\colorconsole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0604416A-CAB6-4A33-91A6-E616FC89FC74}|Launcher\\Launcher.csproj|solutionrelative:launcher\\colorconsole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NoteSystem\\Program.cs",
-              "RelativeDocumentMoniker": "NoteSystem\\Program.cs",
-              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NoteSystem\\Program.cs",
-              "RelativeToolTip": "NoteSystem\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ColorConsole.cs",
+              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\ColorConsole.cs",
+              "RelativeDocumentMoniker": "Launcher\\ColorConsole.cs",
+              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\ColorConsole.cs",
+              "RelativeToolTip": "Launcher\\ColorConsole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T11:56:14.507Z",
+              "WhenOpened": "2026-04-29T12:19:04.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateService.cs",
+              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\UpdateService.cs",
+              "RelativeDocumentMoniker": "Launcher\\UpdateService.cs",
+              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\UpdateService.cs",
+              "RelativeToolTip": "Launcher\\UpdateService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:18:46.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\Program.cs",
+              "RelativeDocumentMoniker": "Launcher\\Program.cs",
+              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\Launcher\\Program.cs",
+              "RelativeToolTip": "Launcher\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:18:25.862Z",
               "EditorCaption": ""
             }
           ]
