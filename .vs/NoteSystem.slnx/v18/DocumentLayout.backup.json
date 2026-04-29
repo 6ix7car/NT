@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E03FD9A9-E90E-4AE5-80F5-48937BE85A9D}|NotesApp\\NotesApp.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\notesapp\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FD9A9-E90E-4AE5-80F5-48937BE85A9D}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E03FD9A9-E90E-4AE5-80F5-48937BE85A9D}|NotesApp\\NotesApp.csproj|x:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u043C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\ready\\notesystem\\notesapp\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FD9A9-E90E-4AE5-80F5-48937BE85A9D}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Stats.cs",
+              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NotesApp\\Stats.cs",
+              "RelativeDocumentMoniker": "NotesApp\\Stats.cs",
+              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NotesApp\\Stats.cs",
+              "RelativeToolTip": "NotesApp\\Stats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:30:54.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NotesApp\\AuthService.cs",
+              "RelativeDocumentMoniker": "NotesApp\\AuthService.cs",
+              "ToolTip": "X:\\3 \u043A\u0443\u0440\u0441 2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F \u041C\u0438\u0445\u0430\u0439\u043B\u043E\u0432\\Ready\\NoteSystem\\NotesApp\\AuthService.cs",
+              "RelativeToolTip": "NotesApp\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:29:52.001Z",
+              "EditorCaption": ""
             }
           ]
         }
