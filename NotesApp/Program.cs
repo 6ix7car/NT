@@ -63,9 +63,11 @@ namespace NotesApp
             { "-d", "--deletenote" }, { "-del", "--deletenote" }, { "-rm", "--deletenote" },
             { "-r", "--restorenote" }, { "-restore", "--restorenote" },
             { "-stats", "--systemstats" }, { "-logs", "--securitylogs" },
-            { "-login", "--login" }, { "-reg", "--register" },
+            { "-lgn", "--login" }, { "-reg", "--register" },
             { "-role", "--myrole" }, { "-out", "--logout" },
-            { "-h", "--help" }, { "?", "--help" }, { "/?", "--help" }
+            { "-h", "--help" }, { "?", "--help" }, { "/?", "--help" },
+            { "-proclogin", "--proclogin" },
+            { "--proc-login", "--proclogin" },
         };
 
         static void ProcessCommand(string input)
@@ -183,6 +185,26 @@ namespace NotesApp
                     if (currentUserRole != "admin") { ColorConsole.WriteLineError("Доступ только админу."); break; }
                     ShowSecurityLogs();
                     break;
+                case "--proclogin":
+                    if (parts.Length >= 3)
+                    {
+                        string username = parts[1];
+                        string password = parts[2];
+                        var (success, userId, role) = DbHelper.CallLoginProcedure(username, password);
+                        if (success)
+                        {
+                            ColorConsole.WriteLineSuccess($"Хранимая процедура выполнена. Пользователь {username} (id={userId}, role={role}) авторизован. Заметка о входе создана.");
+                        }
+                        else
+                        {
+                            ColorConsole.WriteLineError("Хранимая процедура не вернула результат. Неверный логин или пароль.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Использование: --proc-login <username> <password>");
+                    }
+                    break;
                 default:
                     ColorConsole.WriteLineWarning("Неизвестная команда. Введите --help.");
                     break;
@@ -194,32 +216,33 @@ namespace NotesApp
             if (currentUserId == -1)
             {
                 Console.WriteLine(@"
-Доступные команды (не авторизован):
-  --login <user> <pass>      - Вход
-  --register <user> <pass> [role] - Регистрация (admin/user/readonly)
-  --help                     - Справка
-  exit                       - Выход");
+                Доступные команды (не авторизован):
+                  --login (-lgn) <username> <password>     - Вход в систему (обычный)
+                  --proc-login <user> <pass>                 - Проверить хранимую процедуру (создаст заметку)
+                  --register (-reg) <user> <pass> [role]     - Регистрация (admin/user/readonly)
+                  --help (-h, ?, /?)                         - Справка
+                  exit                                       - Выход");
                 return;
             }
             Console.WriteLine("=== ДОСТУПНЫЕ КОМАНДЫ ===");
-            Console.WriteLine("  --logout                - Выйти");
-            Console.WriteLine("  --myrole                - Моя роль");
-            Console.WriteLine("  --listNotes             - Список заметок");
-            Console.WriteLine("  --getNote <id>          - Показать заметку");
+            Console.WriteLine("  --logout (-out)                    - Выйти");
+            Console.WriteLine("  --myrole (-role)                   - Моя роль");
+            Console.WriteLine("  --listNotes (-l, -list)            - Список заметок");
+            Console.WriteLine("  --getNote (-g) <id>                - Показать заметку");
             if (currentUserRole != "readonly")
             {
-                Console.WriteLine("  --addNewNote \"текст\"   - Добавить");
-                Console.WriteLine("  --editNote <id> \"текст\"- Редактировать");
-                Console.WriteLine("  --deleteNote <id>      - Удалить");
-                Console.WriteLine("  --restoreNote <id>     - Восстановить");
+                Console.WriteLine("  --addNewNote (-a, -add) \"текст\"    - Добавить заметку");
+                Console.WriteLine("  --editNote (-e, -edit) <id> \"текст\" - Редактировать");
+                Console.WriteLine("  --deleteNote (-d, -del, -rm) <id>     - Удалить");
+                Console.WriteLine("  --restoreNote (-r, -restore) <id>     - Восстановить");
             }
             if (currentUserRole == "admin")
             {
-                Console.WriteLine("  --systemStats local    - Статистика сервера");
-                Console.WriteLine("  --securityLogs list    - Логи безопасности");
+                Console.WriteLine("  --systemStats (-stats) local       - Статистика сервера (CPU/RAM/HDD)");
+                Console.WriteLine("  --securityLogs (-logs) list        - Логи безопасности");
             }
-            Console.WriteLine("  --help                  - Справка");
-            Console.WriteLine("  exit                    - Выход");
+            Console.WriteLine("  --help (-h, ?, /?)                 - Справка");
+            Console.WriteLine("  exit                               - Выход");
         }
 
         static void ShowSecurityLogs()

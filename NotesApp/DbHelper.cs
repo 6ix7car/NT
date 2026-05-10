@@ -6,6 +6,7 @@ namespace NotesApp
     public static class DbHelper
     {
         private static string _conn = "Server=localhost;Port=5432;User ID=postgres;Password=3455;Database=NoteSystem;";
+        private static string _appUserConn = "Server=localhost;Port=5432;User ID=app_user;Password=secure_password;Database=NoteSystem;";
 
         public static DataTable ExecuteQuery(string query, NpgsqlParameter[] parameters = null)
         {
@@ -34,6 +35,31 @@ namespace NotesApp
                 {
                     if (parameters != null) cmd.Parameters.AddRange(parameters);
                     return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        /// <summary>
+        /// Вызывает хранимую процедуру app.login_user. Возвращает (успех, userId, роль).
+        /// </summary>
+        public static (bool success, int userId, string role) CallLoginProcedure(string username, string password)
+        {
+            using (var conn = new NpgsqlConnection(_appUserConn))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("SELECT * FROM app.login_user(@u, @p)", conn))
+                {
+                    cmd.Parameters.AddWithValue("u", username);
+                    cmd.Parameters.AddWithValue("p", password);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int uid = reader.GetInt32(0);
+                            string role = reader.GetString(1);
+                            return (true, uid, role);
+                        }
+                        return (false, -1, null);
+                    }
                 }
             }
         }

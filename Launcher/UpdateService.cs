@@ -36,7 +36,10 @@ namespace Launcher
 
                         while (true)
                         {
-                            Console.Write("Установить обновление? (y/n): ");
+                            Console.Write("Установить обновление? (");
+                            ColorConsole.WriteSuccess("'y (yes)','да'");
+                            Console.Write("/");
+                            ColorConsole.WriteError("'n (no)','нет'): ");
                             string answer = Console.ReadLine()?.ToLower().Trim();
 
                             if (answer == "y" || answer == "н")
