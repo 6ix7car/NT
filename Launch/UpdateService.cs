@@ -1,5 +1,12 @@
 ﻿
 
+using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Net;
+
 namespace Launcher
 {
     public class UpdateService

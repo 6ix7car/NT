@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Launcher;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Launcher;
-using NotesApp;
 
 namespace NotesApp
 {
@@ -29,7 +28,6 @@ namespace NotesApp
 ╚══════════════════════════════════════════════════════════════╝
 ");
 
-            // Регистрация обработчика закрытия – убить агент
             AppDomain.CurrentDomain.ProcessExit += (s, e) =>
             {
                 try
@@ -62,7 +60,7 @@ namespace NotesApp
             { "-e", "--editnote" }, { "-edit", "--editnote" },
             { "-d", "--deletenote" }, { "-del", "--deletenote" }, { "-rm", "--deletenote" },
             { "-r", "--restorenote" }, { "-restore", "--restorenote" },
-            { "-stats", "--systemstats" }, { "-logs", "--securitylogs" },
+            { "-stats", "--systemstats local" }, { "-logs", "--securitylogs" },
             { "-lgn", "--login" }, { "-reg", "--register" },
             { "-role", "--myrole" }, { "-out", "--logout" },
             { "-h", "--help" }, { "?", "--help" }, { "/?", "--help" },

@@ -1,5 +1,6 @@
 <Solution>
-  <Project Path="Launcher/Launcher.csproj" Id="0604416a-cab6-4a33-91a6-e616fc89fc74" />
+  <Project Path="Launch/Launch.csproj" Id="14006e9e-062f-470e-8fa4-e4c8de0a5b72" />
   <Project Path="NotesApp/NotesApp.csproj" Id="e03fd9a9-e90e-4ae5-80f5-48937be85a9d" />
   <Project Path="StatsAgent/StatsAgent.csproj" Id="26f47615-f8f1-4d7f-8e72-9d848e23f007" />
+  <Project Path="Tests/Tests.csproj" Id="b8cd57a5-edc7-4963-9e52-5219c2f9089a" />
 </Solution>
