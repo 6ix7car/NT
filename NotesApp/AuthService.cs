@@ -40,7 +40,6 @@ namespace NotesApp
                             string storedHash = reader.GetString(2);
                             if (storedHash == GetMd5Hash(password))
                             {
-                                // Обновление last_login
                                 reader.Close();
                                 string upd = "UPDATE users SET last_login_at = @now WHERE id = @id";
                                 using (var updCmd = new NpgsqlCommand(upd, conn))

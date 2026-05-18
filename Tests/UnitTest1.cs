@@ -118,11 +118,9 @@ namespace NotesApp.Tests
         }
         #endregion
 
-        // ========== Хранимая процедура ==========
         [TestMethod]
         public void StoredProcedure_LoginUser_ReturnsUserIdAndRole_CreatesNote()
         {
-            // Сначала регистрируем пользователя и получаем его ID
             AuthService.Register(testUser, testPass, "user");
             AuthService.Login(testUser, testPass);
             int userId = GetUserId(testUser);
@@ -148,7 +146,6 @@ namespace NotesApp.Tests
             Assert.IsTrue(count > 0, "Заметка о входе через хранимую процедуру не создана");
         }
 
-        // ========== Статистика ==========
         [TestMethod]
         public void Stats_SaveLocalStatsToDb_InsertsRecord()
         {
@@ -158,7 +155,6 @@ namespace NotesApp.Tests
             Assert.IsTrue(after > before, "Статистика не сохранилась в БД");
         }
 
-        // ========== Вспомогательные методы ==========
         private int GetUserId(string username)
         {
             var p = new NpgsqlParameter[] { new NpgsqlParameter("u", username) };

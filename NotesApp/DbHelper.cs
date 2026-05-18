@@ -38,9 +38,6 @@ namespace NotesApp
                 }
             }
         }
-        /// <summary>
-        /// Вызывает хранимую процедуру app.login_user. Возвращает (успех, userId, роль).
-        /// </summary>
         public static (bool success, int userId, string role) CallLoginProcedure(string username, string password)
         {
             using (var conn = new NpgsqlConnection(_appUserConn))

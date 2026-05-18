@@ -40,9 +40,9 @@ namespace Launcher
                         while (true)
                         {
                             Console.Write("Установить обновление? (");
-                            ColorConsole.WriteSuccess("'y (yes)','да'");
+                            ColorConsole.WriteSuccess("'y (yes)'");
                             Console.Write("/");
-                            ColorConsole.WriteError("'n (no)','нет'): ");
+                            ColorConsole.WriteError("'n (no)'): ");
                             string answer = Console.ReadLine()?.ToLower().Trim();
 
                             if (answer == "y" || answer == "yes" || answer == "н")
@@ -110,15 +110,14 @@ namespace Launcher
                 ColorConsole.WriteInfo("Распаковка...");
                 ZipFile.ExtractToDirectory(tempZip, targetFolder);
 
-                // Поиск Launcher.exe (с учётом вложенности)
-                string launcherPath = Path.Combine(targetFolder, "Launcher.exe");
+                string launcherPath = Path.Combine(targetFolder, "Launch.exe");
                 if (!File.Exists(launcherPath))
                 {
                     var subdirs = Directory.GetDirectories(targetFolder);
                     if (subdirs.Length > 0)
                     {
                         string innerFolder = subdirs[0];
-                        launcherPath = Path.Combine(innerFolder, "Launcher.exe");
+                        launcherPath = Path.Combine(innerFolder, "Launch.exe");
                         if (File.Exists(launcherPath))
                         {
                             foreach (string file in Directory.GetFiles(innerFolder))
@@ -152,7 +151,7 @@ namespace Launcher
                 }
                 else
                 {
-                    ColorConsole.WriteError("Не удалось найти Launcher.exe в архиве.");
+                    ColorConsole.WriteError("Не удалось найти Launch.exe в архиве.");
                     if (AskRunOldOrExit())
                         return;
                     else
@@ -175,7 +174,6 @@ namespace Launcher
             string answer = Console.ReadLine()?.ToLower().Trim();
             if (answer == "y" || answer == "yes" || answer == "да")
             {
-                // Продолжаем работу лаунчера со старой версией
                 return true;
             }
             else

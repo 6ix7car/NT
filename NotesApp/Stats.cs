@@ -80,7 +80,6 @@ namespace NotesApp
                 }
             }
             catch { }
-            // fallback
             return (8192, 4096);
         }
 
