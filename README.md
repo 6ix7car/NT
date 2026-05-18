@@ -1,6 +1,6 @@
 # 📝 Система заметок — инструкция пользователя
 
-[![Version](https://img.shields.io/badge/version-1.0.2-brightgreen)](https://github.com/6ix7car/NotesSystem/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/6ix7car/NotesSystem/releases)
 [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.8-blue)](https://dotnet.microsoft.com/)
 
 **Консольная система для администрирования IT-инфраструктуры VPN-сервиса.**  
