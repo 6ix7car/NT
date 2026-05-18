@@ -1,19 +1,17 @@
-﻿
-
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Diagnostics;
 
 namespace Launcher
 {
     public class UpdateService
     {
-        private const string CurrentVersion = "1.0.0";
+        private const string CurrentVersion = "0.0.0";  
         private const string RepoOwner = "6ix7car";
-        private const string RepoName = "NT";
+        private const string RepoName = "NT";           
 
         public void CheckForUpdates()
         {
@@ -34,35 +32,23 @@ namespace Launcher
 
                     if (latestTag != CurrentVersion)
                     {
-                        ColorConsole.WriteLineWarning($"Доступна новая версия: {releaseName}");
+                        ColorConsole.WriteLineWarning($" Доступна новая версия: {releaseName}");
                         ColorConsole.WriteLineInfo($"Что нового: {releaseNotes}");
-
-                        while (true)
+                        Console.Write("Установить обновление? (y/n): ");
+                        string answer = Console.ReadLine()?.ToLower();
+                        if (answer == "y" || answer == "н")
                         {
-                            Console.Write("Установить обновление? (");
-                            ColorConsole.WriteSuccess("'y (yes)'");
-                            Console.Write("/");
-                            ColorConsole.WriteError("'n (no)'): ");
-                            string answer = Console.ReadLine()?.ToLower().Trim();
-
-                            if (answer == "y" || answer == "yes" || answer == "н")
-                            {
-                                DownloadAndApply(release);
-                                break;
-                            }
-                            else if (answer == "n" || answer == "no" || answer == "т")
-                            {
-                                ColorConsole.WriteLineInfo("Обновление отложено.");
-                                break;
-                            }
-                            else
-                            {
-                                ColorConsole.WriteLineWarning("Пожалуйста, введите 'y' (да) или 'n' (нет).");
-                            }
+                            DownloadAndApply(release);
+                        }
+                        else
+                        {
+                            ColorConsole.WriteLineInfo("Обновление отложено.");
                         }
                     }
                     else
-                        ColorConsole.WriteLineSuccess("Установлена последняя версия.");
+                    {
+                        ColorConsole.WriteSuccess("Установлена последняя версия.");
+                    }
                 }
                 catch (WebException ex)
                 {
@@ -78,8 +64,7 @@ namespace Launcher
                 var assets = release["assets"] as JArray;
                 if (assets == null || assets.Count == 0)
                 {
-                    ColorConsole.WriteError("В релизе нет прикреплённых ZIP-файлов.");
-                    AskRunOldOrExit();
+                    ColorConsole.WriteLineError("В релизе нет прикреплённых ZIP-файлов.");
                     return;
                 }
 
@@ -88,101 +73,67 @@ namespace Launcher
                 string tagWithoutV = latestTag.TrimStart('v');
 
                 string tempZip = Path.Combine(Path.GetTempPath(), $"update_{latestTag}.zip");
-                ColorConsole.WriteInfo($"Загрузка обновления {latestTag}...");
+                ColorConsole.WriteLineInfo($"Загрузка обновления {latestTag}...");
                 using (var client = new WebClient())
                 {
                     client.Headers.Add("User-Agent", "NotesLauncher");
                     client.DownloadFile(downloadUrl, tempZip);
                 }
-                ColorConsole.WriteSuccess($"Архив скачан: {tempZip}");
+                ColorConsole.WriteLineSuccess($"Архив скачан: {tempZip}");
 
                 string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string targetFolder = Path.Combine(desktop, $"NotesSystem_{tagWithoutV}");
-
-                // Завершаем процесс старой версии, если он запущен
-                foreach (var p in Process.GetProcessesByName("Launch"))
-                {
-                    try
-                    {
-                        ColorConsole.WriteInfo($"Завершение процесса {p.ProcessName} (PID: {p.Id})...");
-                        p.Kill();
-                        p.WaitForExit(2000);
-                    }
-                    catch { }
-                }
-
                 if (Directory.Exists(targetFolder))
                 {
-                    ColorConsole.WriteWarning($"Папка {targetFolder} уже существует. Удаление...");
+                    ColorConsole.WriteLineWarning($"Папка {targetFolder} уже существует. Будет перезаписана.");
                     Directory.Delete(targetFolder, true);
                 }
                 Directory.CreateDirectory(targetFolder);
 
-                ColorConsole.WriteInfo("Распаковка...");
+                ColorConsole.WriteLineInfo("Распаковка...");
                 ZipFile.ExtractToDirectory(tempZip, targetFolder);
 
-                // Поиск Launcher.exe в распакованных файлах
-                string launcherPath = Path.Combine(targetFolder, "Launcher.exe");
-                if (!File.Exists(launcherPath))
+                string launcherExe = Path.Combine(targetFolder, "Launch.exe");
+                if (!File.Exists(launcherExe))
                 {
                     var subdirs = Directory.GetDirectories(targetFolder);
                     if (subdirs.Length > 0)
                     {
-                        string innerFolder = subdirs[0];
-                        launcherPath = Path.Combine(innerFolder, "Launcher.exe");
-                        if (File.Exists(launcherPath))
+                        launcherExe = Path.Combine(subdirs[0], "Launch.exe");
+                        if (File.Exists(launcherExe))
                         {
-                            foreach (string file in Directory.GetFiles(innerFolder))
+                            foreach (string file in Directory.GetFiles(subdirs[0]))
                                 File.Move(file, Path.Combine(targetFolder, Path.GetFileName(file)));
-                            foreach (string dir in Directory.GetDirectories(innerFolder))
+                            foreach (string dir in Directory.GetDirectories(subdirs[0]))
                                 Directory.Move(dir, Path.Combine(targetFolder, Path.GetFileName(dir)));
-                            Directory.Delete(innerFolder);
+                            Directory.Delete(subdirs[0]);
+                            launcherExe = Path.Combine(targetFolder, "Launch.exe");
                         }
                     }
                 }
 
-                if (File.Exists(launcherPath))
+                if (File.Exists(launcherExe))
                 {
-                    ColorConsole.WriteSuccess($"Новая версия установлена в папку: {targetFolder}");
+                    ColorConsole.WriteSuccess($"Обновление установлено в {targetFolder}");
                     Console.Write("Запустить обновлённую версию сейчас? (y/n): ");
-                    string answer = Console.ReadLine()?.ToLower();
-                    if (answer == "y" || answer == "н")
+                    if (Console.ReadLine()?.ToLower() == "y")
                     {
-                        ColorConsole.WriteInfo("Запуск новой версии...");
-                        Process.Start(launcherPath);
+                        Process.Start(launcherExe);
                         Environment.Exit(0);
                     }
                     else
                     {
-                        ColorConsole.WriteInfo("Обновление установлено, но не запущено.");
-                        AskRunOldOrExit();
+                        ColorConsole.WriteLineInfo("Обновление установлено. Вы можете запустить его позже.");
                     }
                 }
                 else
                 {
-                    ColorConsole.WriteError("Не удалось найти Launcher.exe в архиве.");
-                    AskRunOldOrExit();
+                    ColorConsole.WriteLineError("Не найден Launch.exe в архиве. Проверьте содержимое ZIP.");
                 }
             }
             catch (Exception ex)
             {
-                ColorConsole.WriteError($"Ошибка при установке обновления: {ex.Message}");
-                AskRunOldOrExit();
-            }
-        }
-
-        private bool AskRunOldOrExit()
-        {
-            ColorConsole.WriteLineWarning($"Запустить текущую версию (v{CurrentVersion})? (y/n): ");
-            string answer = Console.ReadLine()?.ToLower().Trim();
-            if (answer == "y" || answer == "yes" || answer == "да")
-            {
-                return true;
-            }
-            else
-            {
-                ColorConsole.WriteLineInfo("Выход.");
-                return false;
+                ColorConsole.WriteLineError($"Ошибка обновления: {ex.Message}");
             }
         }
     }
